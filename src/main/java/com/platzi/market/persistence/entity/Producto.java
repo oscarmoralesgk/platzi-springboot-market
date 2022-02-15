@@ -1,22 +1,26 @@
+
 package com.platzi.market.persistence.entity;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "IVR_CONSULTA.platzi_productos")
+@Table(name = "platzi_productos", schema = "IVR_CONSULTA")
 public class Producto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "platzi_productos_seq")
+    @SequenceGenerator(name = "platzi_productos_seq", schema = "IVR_CONSULTA", allocationSize = 1)
     @Column(name = "id_producto")
     private Integer idProducto;
 
     private String nombre;
 
     @Column(name = "id_categoria")
-    private String idCategoria;
+    private int idCategoria;
 
-    @Column(name = "codigoBarras")
+    @Column(name = "codigo_barras")
     private String codigoBarras;
 
     @Column(name = "precio_venta")
@@ -39,7 +43,7 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public void setIdCategoria(String idCategoria) {
+    public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
     }
 
@@ -67,7 +71,7 @@ public class Producto {
         return nombre;
     }
 
-    public String getIdCategoria() {
+    public int getIdCategoria() {
         return idCategoria;
     }
 

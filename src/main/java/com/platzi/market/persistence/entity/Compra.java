@@ -1,18 +1,21 @@
+
 package com.platzi.market.persistence.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
+@Table(name = "platzi_compras", schema = "IVR_CONSULTA")
 public class Compra {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
     private Integer idCompra;
 
     @Column(name = "id_cliente")
-    private Integer idCliente;
+    private String idCliente;
 
     private LocalDateTime fecha;
 
@@ -27,7 +30,7 @@ public class Compra {
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL})
     private List<CompraProducto> productos;
 
 
@@ -39,11 +42,11 @@ public class Compra {
         this.idCompra = idCompra;
     }
 
-    public Integer getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Integer idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 

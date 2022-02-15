@@ -1,11 +1,10 @@
+
 package com.platzi.market.persistence.entity;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "platzi_compras_productos", schema = "IVR_CONSULTA")
 public class CompraProducto {
 
     @EmbeddedId
@@ -18,6 +17,7 @@ public class CompraProducto {
     private String estado;
 
     @ManyToOne
+    @MapsId("idCompra")
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
     private Compra compra;
 

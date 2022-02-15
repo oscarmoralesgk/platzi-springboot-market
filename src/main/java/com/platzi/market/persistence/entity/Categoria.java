@@ -1,8 +1,11 @@
+
 package com.platzi.market.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "platzi_categorias", schema = "IVR_CONSULTA")
 public class Categoria {
 
     @Id

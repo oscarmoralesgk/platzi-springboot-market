@@ -1,11 +1,11 @@
+
 package com.platzi.market.persistence.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "platzi_clientes", schema = "IVR_CONSULTA")
 public class Cliente {
 
     @Id
@@ -81,3 +81,4 @@ public class Cliente {
         this.compras = compras;
     }
 }
+
